@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Feliz Cumpleaños</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(270deg, #ff4e50, #f9d423, #24c6dc, #514a9d);
+        background-size: 800% 800%;
+        animation: fondo 10s ease infinite;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+    }
+
+    @keyframes fondo {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .carta {
+        background: rgba(0,0,0,0.6);
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+        color: white;
+        max-width: 500px;
+        animation: aparecer 2s ease forwards;
+        opacity: 0;
+    }
+
+    @keyframes aparecer {
+        to { opacity: 1; transform: scale(1); }
+        from { opacity: 0; transform: scale(0.8); }
+    }
+
+    h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        animation: latido 1.5s infinite;
+    }
+
+    @keyframes latido {
+        0%,100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+    }
+
+    p {
+        font-size: 1.2em;
+        line-height: 1.6;
+        opacity: 0;
+        animation: escribir 3s forwards;
+        animation-delay: 1.5s;
+    }
+
+    @keyframes escribir {
+        to { opacity: 1; }
+    }
+
+    .confeti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: white;
+        top: -10px;
+        animation: caer linear infinite;
+    }
+
+    @keyframes caer {
+        to {
+            transform: translateY(110vh) rotate(720deg);
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="carta">
+    <h1>🎉 Feliz Cumpleaños Mi estrellita 🎂</h1>
+    <p>
+        Hoy no es cualquier día… hoy se celebra un año más.  
+        Un año más, creciendo, resistiendo y avanzando.  
+        Que este nuevo año traiga cosas que te hagan sonreir.
+        Por lo que no me queda más que decir, te quiero Jaque!.
+        Eres una persona increíble, una mujer increíble.
+        Y eres la mujer de mi vida, FELIZ CUMPLEAÑOS!!!!.
+        Disfruta, vive y no olvides lo importante que eres.
+    </p>
+</div>
+
+<script>
+function crearConfeti() {
+    const confeti = document.createElement("div");
+    confeti.classList.add("confeti");
+    confeti.style.left = Math.random() * 100 + "vw";
+    confeti.style.backgroundColor = `hsl(${Math.random()*360},100%,50%)`;
+    confeti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(confeti);
+
+    setTimeout(() => {
+        confeti.remove();
+    }, 5000);
+}
+
+setInterval(crearConfeti, 150);
+</script>
+
+</body>
+</html>
